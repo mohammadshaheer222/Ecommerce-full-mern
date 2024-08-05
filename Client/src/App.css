@@ -1,0 +1,20 @@
+.slick-arrow.slick-next,
+.slick-arrow.slick-prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 40%;
+  height: 30px;
+  width: 30px;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  display: none;
+}
+
+.arrows {
+  height: 20px;
+  width: 20px;
+  margin: 1px;
+}

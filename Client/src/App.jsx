@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ActivationPage, LoginPage, SignUpPage } from "./Routes";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import HomePage from "./Pages/HomePage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
             path="/activation/:activation_token"
             element={<ActivationPage />}
           />
+          <Route path="/" element={<HomePage />} />
         </Routes>
         <ToastContainer
           position="top-center"

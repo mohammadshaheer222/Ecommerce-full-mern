@@ -3,8 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      Roboto: ["Roboto", "sans-serif"],
-      Poppins: ["Poppins", "sans-serif"],
+      oswald: ["Oswald", "sans-serif"],
     },
     extend: {
       screens: {
@@ -13,6 +12,11 @@ export default {
         "800px": "800px",
         "1300px": "1300px",
         "400px": "400px",
+      },
+      backgroundImage: {
+        hero: "url('../src/assets/HEADER2.jpg')",
+        heroXs: "url('../src/assets/Header_M(1).jpg')",
+        bannerOffer: "url('../src/assets/banner.jpg')",
       },
     },
   },

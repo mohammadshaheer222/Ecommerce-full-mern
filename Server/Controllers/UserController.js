@@ -23,7 +23,6 @@ router
         const filePath = `uploads/${filenName}`;
         fs.unlink(filePath, (error) => {
           if (error) {
-            console.log(error);
             res.status(500).json({ message: "Error Deleting File" });
           }
         });
@@ -104,5 +103,30 @@ router.route("/activation").post(
     }
   })
 );
+
+router.route("/login-user").post(
+  catchAsynErrors(async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+      if (!email || !password) {
+        return next(new ErrorHandler("Please Provide All Fields", 400));
+      }
+
+      const user = await User.findOne({ email }).select("+password");
+      if (!user) {
+        return next(new ErrorHandler("Requested User not Found", 400));
+      }
+
+      const isPasswordValid = await User.comparePassword(password);
+      if (!isPasswordValid) {
+        return next(new ErrorHandler("Invalid credentials", 400));
+      }
+
+      sendToken(user, 201, res);
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+)
 
 module.exports = router;
